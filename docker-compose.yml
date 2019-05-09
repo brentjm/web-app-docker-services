@@ -1,0 +1,65 @@
+version: '3.5'
+services:
+
+#  postgres:
+#    build: ./postgres
+#    volumes:
+#      - postgres-data:/var/lib/postgresql/data
+#    networks:
+#      - app
+#    ports:
+#      - "5432:5432"
+#
+#  influx:
+#    build: ./influx
+#    volumes: 
+#      - influxdb-data:/var/lib/influxdb
+#        #      - influx/influxdb.conf:/etc/influxdb/influxdb.conf
+#
+#    networks:
+#      - app
+#    ports:
+#      - "8086:8086"
+#
+  mosquitto:
+    build: ./mosquitto
+    container_name: mosquitto
+    #    user: mosquitto
+    volumes:
+      - type: volume
+        source: mosquitto_log
+        target: /mosquitto/log
+        volume:
+          nocopy: true
+      - type: volume
+        source: mosquitto_data
+        target: /mosquitto/data
+        volume:
+          nocopy: true
+#      - type: bind
+#        source: ./mosquitto/mosquitto.conf
+#        target: /mosquitto/config/mosquitto.conf
+    networks:
+      - app
+    ports:
+      - "9001:9001"
+      - "1883:1883"
+
+#  nodered:
+#    build: ./node-red
+#    volumes:
+#      - node-red-data:/data
+#    networks:
+#      - app      
+#    ports:
+#      - "1880:1880"
+#
+volumes:
+#  node-red-data:
+#  postgres-data:
+#  influxdb-data:
+  mosquitto_log:
+  mosquitto_data:
+
+networks:
+  app:
