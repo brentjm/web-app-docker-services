@@ -1,5 +1,10 @@
 FROM nodered/node-red-docker
+
 USER node-red
+COPY --chown=node-red:node-red settings.js /usr/src/node-red/.
+COPY --chown=node-red:node-red flows.json /data/.
+COPY --chown=node-red:node-red flows_cred.json /data/.
+
 RUN npm install node-red-dashboard \
     node-red-contrib-opcua \
     node-red-contrib-cip-ethernet-ip \
@@ -8,8 +13,3 @@ RUN npm install node-red-dashboard \
     node-red-node-twilio \
     node-red-node-email \
     node-red-contrib-machine-learning \
-    node-red-contrib-spreadsheet-in \
-    node-red-contrib-viseo-google-spreadsheet \
-    node-red-node-serialport \
-    node-red-contrib-gpio
-COPY settings.js /usr/src/node-red/.

@@ -2,4 +2,4 @@ FROM eclipse-mosquitto
 
 USER mosquitto
 
-COPY $(pwd)/mosquitto/mosquitto.conf /mosquitto/config/mosquitt.conf
+#COPY --chown=mosquitto:mosquitto ./mosquitto.conf /mosquitto/config/mosquitto.conf

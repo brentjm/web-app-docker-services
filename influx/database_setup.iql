@@ -1,2 +1,2 @@
-CREATE DATABASE FAST
-USE FAST
+CREATE DATABASE mydatabase
+USE mydatabase

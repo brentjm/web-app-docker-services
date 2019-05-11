@@ -1,9 +1,9 @@
 begin;
-create table qcmtable
+create table mytable
 (
     timestamp bigint primary key,
     username character varying(40),
     experiment character varying(40),
-    frequency integer not null
+    value integer not null
 );
 commit;
