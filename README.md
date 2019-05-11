@@ -44,6 +44,10 @@ them for a general web app.
   * Define new flows. The flows get coppied to */data* of the container, which
   is a named volume *node-red-data*.
   * Configure the secitury in *node-red/settings*
+  * To add new nodes, log into the container and use npm:
+    * docker exec -it node-red bash
+    * cd /usr/src/node-red/
+    * npm install *your-desired-nodes*
 4. Mosquitto
   * Configure the broker in *mosquitto/mosquitto.conf*
 5. Grafana
