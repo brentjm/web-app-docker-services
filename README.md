@@ -25,6 +25,9 @@ them for a general web app.
       * password: postgrespassword
   * Deploy the flow when done
 4. Open browser to localhost:3000
+  * Default username and password:
+    * user: admin
+    * password: grafana
   * The *Example Dashboard* demonstrates the plotting of data stored in the postgres
   and influx databases.
 
