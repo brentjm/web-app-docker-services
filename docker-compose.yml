@@ -74,6 +74,30 @@ services:
     ports:
       - "3000:3000"
 
+  nginx:
+    build: ./nginx
+    image: nginx-custom
+    container_name: nginx
+    networks:
+      - app
+    ports:
+      - "80:80"
+
+  
+
+  jupyter:
+    build: ./jupyter
+    image: jupyter-notebook
+    container_name: jupyter
+    #    volumes:
+    #  - type: volume
+    #    source: jupyter-data
+    #    target: 
+    networks:
+      - app
+    ports:
+      - "8888:8888"
+
 volumes:
   node-red-data:
   postgres-data:
@@ -81,6 +105,7 @@ volumes:
   mosquitto_log:
   mosquitto_data:
   grafana-data:
+      #  jupyter-data:
 
 networks:
   app:
