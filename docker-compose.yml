@@ -83,7 +83,14 @@ services:
     ports:
       - "80:80"
 
-  
+  flask:
+    build: ./flask
+    image: flask-custom
+    container_name: flask
+    networks:
+      - app
+    ports:
+      - "80:80"
 
   jupyter:
     build: ./jupyter
