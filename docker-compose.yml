@@ -90,7 +90,7 @@ services:
     networks:
       - app
     ports:
-      - "80:80"
+      - "8000:8000"
 
   jupyter:
     build: ./jupyter
