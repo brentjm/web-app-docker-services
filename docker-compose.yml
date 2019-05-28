@@ -60,6 +60,10 @@ services:
       - app      
     ports:
       - "1880:1880"
+    depends_on:
+      - mosquitto
+      - postgres
+      - influx
 
   grafana:
     build: ./grafana
@@ -73,6 +77,9 @@ services:
       - app      
     ports:
       - "3000:3000"
+    depends_on:
+      - postgres
+      - influx
 
   nginx:
     build: ./nginx
@@ -82,6 +89,9 @@ services:
       - app
     ports:
       - "80:80"
+    depends_on:
+      - nodered
+      - flask
 
   flask:
     build: ./flask
@@ -91,6 +101,9 @@ services:
       - app
     ports:
       - "8000:8000"
+    depends_on:
+      - postgres
+      - influx
 
   jupyter:
     build: ./jupyter
