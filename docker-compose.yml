@@ -1,6 +1,5 @@
 version: '3.5'
 services:
-
   postgres:
     build: ./postgres
     image: postgres-custom
@@ -11,8 +10,6 @@ services:
         target: /var/lib/postgresql/data
     networks:
       - app
-#    ports:
-#      - "5432:5432"
 
   influx:
     build: ./influx
@@ -24,8 +21,7 @@ services:
         target: /var/lib/influxdb
     networks:
       - app
-#    ports:
-#      - "8086:8086"
+    restart: always
 
   mosquitto:
     build: ./mosquitto
@@ -47,6 +43,7 @@ services:
     ports:
       - "9001:9001"
       - "1883:1883"
+    restart: always
 
   nodered:
     build: ./node-red
@@ -62,8 +59,11 @@ services:
       - "1880:1880"
     depends_on:
       - mosquitto
-      - postgres
       - influx
+    restart: always
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    privileged: true
 
   grafana:
     build: ./grafana
@@ -78,8 +78,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - postgres
       - influx
+    restart: always
 
   nginx:
     build: ./nginx
@@ -91,32 +91,7 @@ services:
       - "80:80"
     depends_on:
       - nodered
-      - flask
-
-  flask:
-    build: ./flask
-    image: flask-custom
-    container_name: flask
-    networks:
-      - app
-    ports:
-      - "8000:8000"
-    depends_on:
-      - postgres
-      - influx
-
-  jupyter:
-    build: ./jupyter
-    image: jupyter-notebook
-    container_name: jupyter
-    #    volumes:
-    #  - type: volume
-    #    source: jupyter-data
-    #    target: 
-    networks:
-      - app
-    ports:
-      - "8888:8888"
+    restart: always
 
 volumes:
   node-red-data:
@@ -125,7 +100,6 @@ volumes:
   mosquitto_log:
   mosquitto_data:
   grafana-data:
-      #  jupyter-data:
 
 networks:
   app:
