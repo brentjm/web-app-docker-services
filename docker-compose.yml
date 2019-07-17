@@ -109,10 +109,10 @@ services:
     build: ./jupyter
     image: jupyter-notebook
     container_name: jupyter
-    #    volumes:
-    #  - type: volume
-    #    source: jupyter-data
-    #    target: 
+#    volumes:
+#      - type: volume
+#        source: jupyter-data
+#        target: 
     networks:
       - app
     ports:
@@ -125,7 +125,7 @@ volumes:
   mosquitto_log:
   mosquitto_data:
   grafana-data:
-      #  jupyter-data:
+  jupyter-data:
 
 networks:
   app:

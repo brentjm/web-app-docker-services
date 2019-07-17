@@ -10,6 +10,7 @@ RUN npm install node-red-dashboard \
     node-red-contrib-cip-ethernet-ip \
     node-red-contrib-postgres-multi \
     node-red-contrib-influxdb \
+    node-red-contrib-osisoft-web-api \
     node-red-node-twilio \
     node-red-node-email \
     node-red-contrib-machine-learning \
