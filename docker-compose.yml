@@ -59,7 +59,7 @@ services:
     networks:
       - app      
     ports:
-      - "1880:1880"
+        - "1880:1880"
     depends_on:
       - mosquitto
       - postgres
