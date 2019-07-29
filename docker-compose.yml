@@ -13,6 +13,7 @@ services:
       - app
 #    ports:
 #      - "5432:5432"
+    restart: unless-stopped
 
   influx:
     build: ./influx
@@ -26,6 +27,7 @@ services:
       - app
 #    ports:
 #      - "8086:8086"
+    restart: unless-stopped
 
   mosquitto:
     build: ./mosquitto
@@ -47,8 +49,9 @@ services:
     ports:
       - "9001:9001"
       - "1883:1883"
+    restart: unless-stopped
 
-  nodered:
+  node-red:
     build: ./node-red
     image: node-red-custom
     container_name: node-red
@@ -58,12 +61,13 @@ services:
         target: /data
     networks:
       - app      
-    ports:
-        - "1880:1880"
+#    ports:
+#        - "1880:1880"
     depends_on:
       - mosquitto
       - postgres
       - influx
+    restart: unless-stopped
 
   grafana:
     build: ./grafana
@@ -75,11 +79,12 @@ services:
         target: /var/lib/grafana
     networks:
       - app      
-    ports:
-      - "3000:3000"
+#    ports:
+#      - "3000:3000"
     depends_on:
       - postgres
       - influx
+    restart: unless-stopped
 
   nginx:
     build: ./nginx
@@ -89,9 +94,11 @@ services:
       - app
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
-      - nodered
+      - node-red
       - flask
+    restart: always
 
   flask:
     build: ./flask
@@ -99,11 +106,12 @@ services:
     container_name: flask
     networks:
       - app
-    ports:
-      - "8000:8000"
+#    ports:
+#      - "8000:8000"
     depends_on:
       - postgres
       - influx
+    restart: unless-stopped
 
   jupyter:
     build: ./jupyter
@@ -115,8 +123,9 @@ services:
 #        target: 
     networks:
       - app
-    ports:
-      - "8888:8888"
+#    ports:
+#      - "8888:8888"
+    restart: unless-stopped
 
 volumes:
   node-red-data:
