@@ -124,7 +124,7 @@ module.exports = {
         users: [
           {
             username: "admin",
-            password: "$2a$08$k/Lo/y7C.iV4BUJH0TSsDuZsyYKwYkBYfprdt/I.DiSVoFmaW59e.",
+            password: "$2b$08$urzbvGQVKhbn9bMASX7XAuUxPT4Dd4omI4uVaY2SJG3qgf/aMB/c6",
             permissions: "*"
           },
 	],
@@ -233,7 +233,7 @@ module.exports = {
     // palette. If a node's category is not in the list, the category will get
     // added to the end of the palette.
     // If not set, the following default order is used:
-    //paletteCategories: ['subflows', 'input', 'output', 'function', 'social', 'mobile', 'storage', 'analysis', 'advanced'],
+    paletteCategories: ['lab', 'PAT', 'OSIsoft', 'storage', 'opcua', 'dashboard', 'subflows', 'input', 'output', 'function', 'social', 'analysis', 'advanced', 'mobile'],
 
     // Configure the logging output
     logging: {
