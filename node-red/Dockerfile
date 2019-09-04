@@ -14,3 +14,4 @@ RUN npm install node-red-dashboard \
     node-red-node-twilio \
     node-red-node-email \
     node-red-contrib-machine-learning \
+    node-red-contrib-chartjs
