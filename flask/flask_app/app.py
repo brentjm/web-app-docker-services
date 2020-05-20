@@ -7,7 +7,7 @@ from flask import Flask
 application = Flask(__name__)
 
 
-@application.route("/flask/test")
+@application.route("/test")
 def test():
     """
     Default route
