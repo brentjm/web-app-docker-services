@@ -100,19 +100,19 @@ services:
       - influx
     restart: unless-stopped
 
-  jupyter:
-    build: ./jupyter
-    image: jupyter-notebook
-    container_name: jupyter
-#    volumes:
-#      - type: volume
-#        source: jupyter-data
-#        target: 
-    networks:
-      - app
-    ports:
-      - "8888:8888"
-    restart: unless-stopped
+#  jupyter:
+#    build: ./jupyter
+#    image: jupyter-notebook
+#    container_name: jupyter
+##    volumes:
+##      - type: volume
+##        source: jupyter-data
+##        target: 
+#    networks:
+#      - app
+#    ports:
+#      - "8888:8888"
+#    restart: unless-stopped
 
   flask:
     build: ./flask
