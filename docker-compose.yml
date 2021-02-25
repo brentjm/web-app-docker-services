@@ -49,6 +49,7 @@ services:
       - app      
     ports:
         - "1880:1880"
+        - "49152:49152"
     depends_on:
       - mosquitto
       - postgres
