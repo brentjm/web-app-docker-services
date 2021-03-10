@@ -13,7 +13,7 @@ services:
     depends_on:
       - node-red
       - flask
-    restart: always
+    restart: unless-stopped
 
   mosquitto:
     build: ./mosquitto
