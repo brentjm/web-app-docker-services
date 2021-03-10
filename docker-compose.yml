@@ -128,6 +128,19 @@ services:
       - influx
     restart: unless-stopped
 
+  telegraf:
+    build: ./telegraf
+    image: telegraf-custom
+    container_name: telegraf
+    networks:
+      - app
+    ports:
+      - "8094:8094"
+    depends_on:
+      - postgres
+      - influx
+    restart: unless-stopped
+
 volumes:
   node-red-data:
   postgres-data:
