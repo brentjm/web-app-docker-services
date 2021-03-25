@@ -108,7 +108,7 @@ services:
 ##    volumes:
 ##      - type: volume
 ##        source: jupyter-data
-##        target: 
+##        target:
 #    networks:
 #      - app
 #    ports:
@@ -121,8 +121,8 @@ services:
     container_name: flask
     networks:
       - app
-#    ports:
-#      - "8000:8000"
+    ports:
+      - "8000:8000"
     depends_on:
       - postgres
       - influx
